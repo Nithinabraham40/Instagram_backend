@@ -275,16 +275,13 @@ public class Authentication {
 
  - **Primary Key :  post_id**
  - **Generationstrategy:  SEQUENCE**
- - **Columns Used:  user_id,user_name , user_phnumber,user_email,user_password**
-
-# Database Design For Product Model
-
- - **Primary Key :  product_id**
- - **Generationstrategy:  Sequence**
- - **Mapping with user:Many to one uni directional**
+  
+  - **Mapping with user:Many to one uni directional**
   
   
  - **Columns Used:  post_id,past_data , creation_date, update_date,fk_user_user_id**
+ 
+
 
 # Database Design For Authentication Model
 

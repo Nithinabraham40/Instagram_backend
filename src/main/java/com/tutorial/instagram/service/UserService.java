@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -55,7 +55,12 @@ public class UserService {
 		return new SignUpOutputDao("Sign up sucessfully!!!! Great");
 	}
 	
-	private String encryptPassword(String password) {
+	
+	
+	
+	
+	
+	   private String encryptPassword(String password) {
 	       
         String salt = BCrypt.gensalt();
 
@@ -65,18 +70,29 @@ public class UserService {
         return hashedPassword;
     }
 	
-	private boolean verifyPassword(String password, String hashedPassword) {
+	
+	
+	
+	   
+	   
+	   
+	   private boolean verifyPassword(String password, String hashedPassword) {
 	    return BCrypt.checkpw(password, hashedPassword);
 	}
+	
+	
+	
+	
+	
 
-	public SigninOutputDao signIn(@Valid SigninInputDao input) {
+	     public SigninOutputDao signIn(@Valid SigninInputDao input) {
+	  	
+		  User user=userRepo.findByEmail(input.getEmail());
 		
-		User user=userRepo.findByEmail(input.getEmail());
-		
-		if(user==null) {
+		  if(user==null) {
 			
 			return new SigninOutputDao("Give valid email","click help");
-		}
+		 }
 		
 		String password=input.getPassword();
 		String encryptedpassword=user.getPassword();
@@ -110,6 +126,10 @@ public class UserService {
 		return new SigninOutputDao("Welcome!!!",auth.getToken());
 	}
 
+	     
+	     
+	     
+	     
 	public ResponseEntity<String> updateUserDetails(String token,SignupInputDao input) {
 		
 		
